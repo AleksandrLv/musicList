@@ -1,35 +1,33 @@
-extends ../layouts/default
-block addMusic
-  form.form-horizontal(role="form")
-    h2 Добавить музыкальную композицию
-    .form-group
-      label.col-sm-3.control-label(for='performer') Исполнитель
-      .col-sm-9
-        input#performer.form-control(type='text', placeholder='Исполнитель')
+form.form-horizontal(role="form")
+  h2 Добавить музыкальную композицию
+  .form-group
+    label.col-sm-3.control-label(for='performer') Исполнитель
+    .col-sm-9
+      input#performer.form-control(type='text', placeholder='Исполнитель')
 
-    .form-group
-      label.col-sm-3.control-label(for='title') Название
-      .col-sm-9
-        input#title.form-control(type='text', placeholder='Название')
+  .form-group
+    label.col-sm-3.control-label(for='title') Название
+    .col-sm-9
+      input#title.form-control(type='text', placeholder='Название')
 
-    .form-group
-      label.col-sm-3.control-label(for='genre') Жанр
-      .col-sm-9
-        select#genre.form-control(type='text', placeholder='Жанр')
-          option Rock
-          option Pop
-          option Instrumental
-          option Classical
-          option Jazz
-          option Other
+  .form-group
+    label.col-sm-3.control-label(for='genre') Жанр
+    .col-sm-9
+      select#genre.form-control(type='text', placeholder='Жанр')
+        option Rock
+        option Pop
+        option Instrumental
+        option Classical
+        option Jazz
+        option Other
 
-    .form-group
-      label.col-sm-3.control-label(for='song') URL песни
-      .col-sm-9
-        input#song.form-control(type='text', placeholder='URL песни')
+  .form-group
+    label.col-sm-3.control-label(for='song') URL песни
+    .col-sm-9
+      input#song.form-control(type='text', placeholder='URL песни')
 
-    .form-group
-      .col-sm-offset-3.col-sm-9
-        #create-music.btn.btn-success(data-dismiss="modal") Добавить
+  .form-group
+    .col-sm-offset-3.col-sm-9
+      #create-music.btn.btn-success(data-dismiss="modal") Добавить
 
-    .close(data-dismiss="modal")
+  .close(data-dismiss="modal")

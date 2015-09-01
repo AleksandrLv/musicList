@@ -1,0 +1,39 @@
+script(type="text/template", id="item-template").
+  <div class="view row">
+    <div class="details col-md-1"></div>
+    <div class="title col-md-5"><%- title %></div>
+    <audio controls src=<%- song %> class="col-md-5"></audio>
+    <div class="delete col-md-1"></div>
+  </div>
+  <div class="view-details collapse">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="det-performer" class="col-md-3 control-label">Исполнитель:</label>
+        <div class="col-md-8">
+          <input id="det-performer" type="text" placeholder="Исполнитель" value=<%- performer %> class="form-control">
+        </div>
+        <div class="col-md-1 delete"></div>
+      </div>
+      <div class="form-group">
+        <label for="det-title" class="col-md-3 control-label">Название:</label>
+        <div class="col-md-8">
+          <input id="det-title" type="text" placeholder="Название" value="<%- title %>" class="form-control">
+        </div>
+        <div class="col-md-1 delete"></div>
+      </div>
+      <div class="form-group">
+        <label for="det-genre" class="col-md-3 control-label">Жанр:</label>
+        <div class="col-md-8">
+          <input id="det-genre" type="text" placeholder="Жанр" value=<%- genre %> class="form-control">
+        </div>
+        <div class="col-md-1 delete"></div>
+      </div>
+      <div class="form-group">
+        <label for="det-song" class="col-md-3 control-label">URL песни:</label>
+        <div class="col-md-8">
+          <input id="det-song" type="text" placeholder="URL песни" value=<%- song %> class="form-control">
+        </div>
+        <div class="col-md-1 delete"></div>
+      </div>
+    </form>
+  </div>
