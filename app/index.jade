@@ -1,12 +1,97 @@
 extends layouts/default
 block content
-  .row.marketing
-    .col-lg-6
-      h4 HTML5 Boilerplate
-      p HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-      h4 Sass
-      p Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
-      h4 Bootstrap
-      p Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.
-      h4 Modernizr
-      p Modernizr is an open-source JavaScript library that helps you build the next generation of HTML5 and CSS3-powered websites.
+  ul#music-list
+    li#filter
+      input.filter(placeholder="Поиск")
+      input.collapse-all(type='checkbox')
+    li
+      .view.row
+        .details.col-md-1
+        .title.col-md-5 Шнурок
+        audio(controls src="https://cs1-18v4.vk-cdn.net/p23/427faf863a82e7.mp3").col-md-5
+        .delete.col-md-1
+      .view-details.collapse
+        form.form-horizontal(role=form)
+          .form-group
+            label.col-md-3.control-label(for='det-performer') Исполнитель:
+            .col-md-8
+              input#det-performer.form-control(type='text', placeholder='Исполнитель', value='Пилот')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-title') Название:
+            .col-md-8
+              input#det-title.form-control(type='text', placeholder='Название', value='Шнурок')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-genre') Жанр:
+            .col-md-8
+              input#det-genre.form-control(type='text', placeholder='Жанр', value='Rock')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-song') URL песни:
+            .col-md-8
+              input#det-song.form-control(type='text', placeholder='URL песни', value='https://cs1-18v4.vk-cdn.net/p23/427faf863a82e7.mp3')
+            .col-md-1.delete
+    li
+      .view.row
+        .details.col-md-1
+        .title.col-md-5 Сибирь
+        audio(controls src="https://psv4.vk.me/c1028/u1076955/audios/9c4528534f2f.mp3").col-md-5
+        .delete.col-md-1
+      .view-details.collapse
+        form.form-horizontal(role=form)
+          .form-group
+            label.col-md-3.control-label(for='det-performer') Исполнитель:
+            .col-md-8
+              input#det-performer.form-control(type='text', placeholder='Исполнитель', value='Пилот')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-title') Название:
+            .col-md-8
+              input#det-title.form-control(type='text', placeholder='Название', value='Сибирь')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-genre') Жанр:
+            .col-md-8
+              input#det-genre.form-control(type='text', placeholder='Жанр', value='Rock')
+            .col-md-1.delete
+          .form-group
+            label.col-md-3.control-label(for='det-song') URL песни:
+            .col-md-8
+              input#det-song.form-control(type='text', placeholder='URL песни', value='https://psv4.vk.me/c1028/u1076955/audios/9c4528534f2f.mp3')
+            .col-md-1.delete
+
+block addMusic
+  form.form-horizontal(role="form")
+    h2 Добавить музыкальную композицию
+    .form-group
+      label.col-sm-3.control-label(for='performer') Исполнитель
+      .col-sm-9
+        input#performer.form-control(type='text', placeholder='Исполнитель')
+
+    .form-group
+      label.col-sm-3.control-label(for='title') Название
+      .col-sm-9
+        input#title.form-control(type='text', placeholder='Название')
+
+    .form-group
+      label.col-sm-3.control-label(for='genre') Жанр
+      .col-sm-9
+        select#genre.form-control(type='text', placeholder='Жанр')
+          option Rock
+          option Pop
+          option Instrumental
+          option Classical
+          option Jazz
+          option Other
+
+    .form-group
+      label.col-sm-3.control-label(for='song') URL песни
+      .col-sm-9
+        input#song.form-control(type='text', placeholder='URL песни')
+
+    .form-group
+      .col-sm-offset-3.col-sm-9
+        #create-music.btn.btn-success(data-dismiss="modal") Добавить
+
+    .close(data-dismiss="modal")
