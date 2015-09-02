@@ -32,7 +32,7 @@ app.AppView = Backbone.View.extend(
     _.each this.musicComposition, ($input, field) ->
       obj[field] = $input.val()
       return
-    console.log obj
+    obj.order = app.musics.nextOrder()
     app.musics.create(obj)
     this.form.reset()
     return
