@@ -1,7 +1,8 @@
 window.app = window.app or {}
 
 app.AppView = Backbone.View.extend(
-  id: 'music-app'
+
+  el: '#music-app'
 
   initialize: ->
     this.musicComposition =
@@ -9,42 +10,69 @@ app.AppView = Backbone.View.extend(
       'title': $('#title')
       'genre': $('#genre')
       'song': $('#song')
-    @log()
-#      console.log 12345
 
-    this.$filter = this.$('.filter')
+    this.filter = this.$('.filter')[0]
     this.collapseAll = this.$('.collapse-all')[0]
     this.$musicList = this.$('#music-list')
+    this.form = this.$('.formAddMusic')[0]
 
-    self = this
-    $('#create-music').on 'click', ->
-      self.createMusic()
-      return
+    this.listenTo(app.musics, 'add', this.addOne);
+    this.listenTo(app.musics, 'reset', this.addAll);
+
+    app.musics.fetch({reset: true});
     return
-
-    this.listenTo(app.Musics, 'all', this.addOne);
 
   events:
     'click #create-music': 'createMusic'
-    'change .filter': 'log'
-    'click': 'log'
-
-  log: ->
-    console.log 222
+    'click .collapse-all': 'collapseAll'
+    'change .filter': 'filterMusics'
 
   createMusic: ->
-    console.log 2
     obj = {}
     _.each this.musicComposition, ($input, field) ->
       obj[field] = $input.val()
       return
     console.log obj
-    app.Musics.create(obj)
+    app.musics.create(obj)
+    this.form.reset()
     return
 
   addOne: (music) ->
-    console.log 246548
     view = new app.MusicView  model: music
     this.$musicList.append(view.render().el);
     return
+
+  addAll: ->
+      this.$musicList.html ''
+      app.musics.each this.addOne, this
+      return
+
+  collapseAll: ->
+    if this.collapseAll.checked
+      $('.collapse').collapse('show')
+    else
+      $('.collapse').collapse('hide')
+    return
+
+  filterMusics: ->
+    query = this.filter.value.trim()
+    if query is ""
+      this.showAll()
+      return
+
+    app.musics.each (music) ->
+      fl = false
+      for field of music.attributes
+        if music.attributes[field] is query
+          fl = true
+          break
+      if fl
+        music.trigger 'visible', on
+      else
+        music.trigger 'visible', off
+    return
+
+  showAll: ->
+    app.musics.each (music) ->
+      music.trigger 'visible', on
 )

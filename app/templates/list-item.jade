@@ -1,39 +1,39 @@
 script(type="text/template", id="item-template").
   <div class="view row">
     <div class="details col-md-1"></div>
-    <div class="title col-md-5"><%- title %></div>
-    <audio controls src=<%- song %> class="col-md-5"></audio>
-    <div class="delete col-md-1"></div>
+    <a href="#" class="title col-md-5"><%= title %></a>
+    <audio controls src=<%= song %> class="col-md-5"></audio>
+    <div class="remove col-md-1"></div>
   </div>
-  <div class="view-details collapse">
+  <div class="view-details collapse in">
     <form class="form-horizontal">
       <div class="form-group">
         <label for="det-performer" class="col-md-3 control-label">Исполнитель:</label>
         <div class="col-md-8">
-          <input id="det-performer" type="text" placeholder="Исполнитель" value=<%- performer %> class="form-control">
+          <input id="det-performer" type="text" data-editField="performer" placeholder="Исполнитель" value="<%= performer %>" class="form-control">
         </div>
-        <div class="col-md-1 delete"></div>
+        <div class="col-md-1 delete" data-deleteField="performer"></div>
       </div>
       <div class="form-group">
         <label for="det-title" class="col-md-3 control-label">Название:</label>
         <div class="col-md-8">
-          <input id="det-title" type="text" placeholder="Название" value="<%- title %>" class="form-control">
+          <input id="det-title" type="text" data-editField="title" placeholder="Название" value="<%= title %>" class="form-control">
         </div>
-        <div class="col-md-1 delete"></div>
+        <div class="col-md-1 delete" data-deleteField="title"></div>
       </div>
       <div class="form-group">
         <label for="det-genre" class="col-md-3 control-label">Жанр:</label>
         <div class="col-md-8">
-          <input id="det-genre" type="text" placeholder="Жанр" value=<%- genre %> class="form-control">
+          <input id="det-genre" type="text" data-editField="genre" placeholder="Жанр" value="<%= genre %>" class="form-control">
         </div>
-        <div class="col-md-1 delete"></div>
+        <div class="col-md-1 delete" data-deleteField="genre"></div>
       </div>
       <div class="form-group">
         <label for="det-song" class="col-md-3 control-label">URL песни:</label>
         <div class="col-md-8">
-          <input id="det-song" type="text" placeholder="URL песни" value=<%- song %> class="form-control">
+          <input id="det-song" type="text" data-editField="song" placeholder="URL песни" value="<%= song %>" class="form-control">
         </div>
-        <div class="col-md-1 delete"></div>
+        <div class="col-md-1 delete" data-deleteField="song"></div>
       </div>
     </form>
   </div>

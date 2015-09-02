@@ -5,9 +5,11 @@ $icon-font-path: '../fonts/';
 // endbower
 
 body {
-  background: #fafafa;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
+  background: url('../images/mb.jpg') no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
 }
 
 header {
@@ -32,6 +34,8 @@ header {
     left: 50px;
     top: 10px;
     margin: 0;
+    font-weight: bold;
+    color: #176B75;
   }
   .btn {
     position: absolute;
@@ -46,7 +50,7 @@ header {
   margin: 0 auto;
   background-color: #fafafa;
   padding: 0 30px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   margin-top: -170px;
 
@@ -72,6 +76,7 @@ header {
   max-width: 550px;
   min-width: 270px;
   position: relative;
+  background-color: #fafafa;
 }
 
 #music-list {
@@ -152,9 +157,10 @@ header {
 
   .title {
     font-size: 22px;
+    text-decoration: none;
   }
 
-  .delete {
+  .remove {
     cursor: pointer;
     color: #e6e6e6;
     transition: color .25s ease;

@@ -24,7 +24,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('views', function () {
-  return gulp.src('app/**/*.jade')
+  return gulp.src('app/*.jade')
     .pipe($.jade({pretty: true}))
     .pipe(gulp.dest('.tmp'))
     .pipe(reload({stream: true}));

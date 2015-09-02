@@ -5,4 +5,4 @@ Musics = Backbone.Collection.extend(
 
   localStorage: new Backbone.LocalStorage 'musics-backbone'
 )
-app.Musics = new Musics()
+app.musics = new Musics()
