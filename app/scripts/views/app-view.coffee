@@ -16,8 +16,9 @@ app.AppView = Backbone.View.extend(
     this.$musicList = this.$('#music-list')
     this.form = this.$('.formAddMusic')[0]
 
-    this.listenTo(app.musics, 'add', this.addOne);
-    this.listenTo(app.musics, 'reset', this.addAll);
+    this.listenTo app.musics, 'add', this.addOne
+    this.listenTo app.musics, 'reset', this.addAll
+    this.listenTo app.musics, 'filter', this.filterMusics
 
     app.musics.fetch({reset: true});
     return
@@ -25,7 +26,7 @@ app.AppView = Backbone.View.extend(
   events:
     'click #create-music': 'createMusic'
     'click .collapse-all': 'collapseAll'
-    'change .filter': 'filterMusics'
+    'keypress .filter': 'filterQuery'
 
   createMusic: ->
     obj = {}
@@ -54,12 +55,17 @@ app.AppView = Backbone.View.extend(
       $('.collapse').collapse('hide')
     return
 
-  filterMusics: ->
-    query = this.filter.value.trim()
-    if query is ""
-      this.showAll()
-      return
+  filterQuery: (e) ->
+    if e.which is 13
+      query = this.filter.value.trim()
+      if query is ""
+        this.showAll()
+        document.location.hash = ''
+        return
+      document.location.hash = '#/?search=' + query
+    return
 
+  filterMusics: (query) ->
     app.musics.each (music) ->
       fl = false
       for field of music.attributes

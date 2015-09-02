@@ -4,31 +4,3 @@ block content
     input.filter(placeholder="Поиск")
     input.collapse-all(type='checkbox' checked='true')
   ul#music-list
-    li
-      .view.row
-        .details.col-md-1
-        a.title.col-md-5(href='#') Шнурок
-        audio(controls src="https://cs1-18v4.vk-cdn.net/p23/427faf863a82e7.mp3").col-md-5
-        .remove.col-md-1
-      .view-details.collapse
-        form.form-horizontal(role=form)
-          .form-group
-            label.col-md-3.control-label(for='det-performer') Исполнитель:
-            .col-md-8
-              input#det-performer.form-control(type='text', placeholder='Исполнитель', value='Пилот')
-            .col-md-1.delete
-          .form-group
-            label.col-md-3.control-label(for='det-title') Название:
-            .col-md-8
-              input#det-title.form-control(type='text', placeholder='Название', value='Шнурок')
-            .col-md-1.delete
-          .form-group
-            label.col-md-3.control-label(for='det-genre') Жанр:
-            .col-md-8
-              input#det-genre.form-control(type='text', placeholder='Жанр', value='Rock')
-            .col-md-1.delete
-          .form-group
-            label.col-md-3.control-label(for='det-song') URL песни:
-            .col-md-8
-              input#det-song.form-control(type='text', placeholder='URL песни', value='https://cs1-18v4.vk-cdn.net/p23/427faf863a82e7.mp3')
-            .col-md-1.delete
