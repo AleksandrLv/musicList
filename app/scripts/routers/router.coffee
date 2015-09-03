@@ -4,13 +4,14 @@ Workspace = Backbone.Router.extend(
     '?search=:query': 'search'
 
   musicItem: (item) ->
-    console.log 'item'+item
+#    app.musics.at(item-1).trigger 'musicPage:show'
     return
 
   search: (query) ->
     app.musics.trigger 'filter', query
     return
 )
-app.workspace = new Workspace();
-Backbone.history.start();
-#Backbone.history.start({pushState: true});
+
+app.workspace = new Workspace()
+Backbone.history.start()
+#Backbone.history.start pushState: true

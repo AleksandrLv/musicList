@@ -3,7 +3,7 @@ window.app = window.app or {}
 app.MusicView = Backbone.View.extend(
   tagName: 'li'
 
-  template: _.template $('#item-template').html()
+  template: _.template $('#itemTemplate').html()
 
   events:
     'change input': 'edit'
@@ -16,12 +16,12 @@ app.MusicView = Backbone.View.extend(
     this.listenTo this.model, 'visible', this.toggleVisible
     return
 
+  log: ->
+    console.log this.model.get 'performer'
+
   render: ->
     this.$el.html this.template this.model.attributes
     this.bind()
-    this.$delete = this.$('.delete')
-    this.$remove = this.$('.remove')
-    this.$input = this.$('input')
     return this
 
   bind: ->

@@ -1,0 +1,23 @@
+script(type="text/template", id="musicPageTemplate").
+  h2 <%= performer %>
+  audio.col-sm-12(controls src="")
+  form.form-horizontal.music-details
+    .form-group
+      label.col-md-3.control-label(for='det-performer') Исполнитель:
+      .col-md-8
+        input#performer.form-control(type='text', placeholder='Исполнитель', value='<%= performer %>')
+    .form-group
+      label.col-md-3.control-label(for='det-title') Название:
+      .col-md-8
+        input#title.form-control(type='text', placeholder='Название', value='<%= title %>')
+    .form-group
+      label.col-md-3.control-label(for='det-genre') Жанр:
+      .col-md-8
+        input#genre.form-control(type='text', placeholder='Жанр', value='<%= genre %>')
+    .form-group
+      label.col-md-3.control-label(for='det-song') URL песни:
+      .col-md-8
+        input#song.form-control(type='text', placeholder='URL песни', value='<%= song %>')
+  .control-buttons
+    .btn.btn-success.save Сохранить
+    .btn.btn-danger.remove Удалить

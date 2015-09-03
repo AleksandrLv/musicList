@@ -60,9 +60,9 @@ app.AppView = Backbone.View.extend(
       query = this.filter.value.trim()
       if query is ""
         this.showAll()
-        document.location.hash = ''
+        app.workspace.navigate ''
         return
-      document.location.hash = '#/?search=' + query
+      app.workspace.navigate '#/?search=' + query, trigger: true #Почему trigger не влияет???
     return
 
   filterMusics: (query) ->
