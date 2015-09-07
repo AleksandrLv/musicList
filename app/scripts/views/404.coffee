@@ -1,12 +1,14 @@
 window.app = window.app or {}
 
-app.MusicPageView = Backbone.View.extend(
+app.Error = Backbone.View.extend(
   className: 'error404'
 
-  template: _.template '<h2>404</h2>h2'
+  template: _.template '<h2>Page not found 404</h2>'
 
   initialize: ->
-    this.listenTo app.workspace, 'router:error404', this.show
+    console.log 1234
+    this.render()
+    this.listenTo this, 'error404', this.show
     return
 
   render: ->
@@ -15,5 +17,5 @@ app.MusicPageView = Backbone.View.extend(
     return this
 
   show: ->
-    $('#music-app').html(this.el)
+    $('#content').html this.el
 )

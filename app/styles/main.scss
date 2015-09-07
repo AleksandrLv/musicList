@@ -70,6 +70,18 @@ header {
   }
 }
 
+.error404 {
+  text-align: center;
+  margin-top: 120px;
+
+  h2 {
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    font-size: 52px;
+  }
+}
+
 #music-app {
   margin: 0 auto;
   margin-top: 80px;
