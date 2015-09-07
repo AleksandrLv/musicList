@@ -1,15 +1,29 @@
+window.app = window.app or {}
+
 Workspace = Backbone.Router.extend(
   routes:
     'items/:item': 'musicItem'
     '?search=:query': 'search'
+    '': 'mainPage'
 
   musicItem: (item) ->
-#    app.musics.at(item-1).trigger 'musicPage:show'
+    app.app ?= new app.AppView()
+    app.musicPages ?= []
+    model = app.musics.get(item)
+    if model
+      app.musicPages[item] ?= new app.MusicPageView model: model
+      app.musicPages[item].trigger 'musicPage:show'
+    else
+      console.log "error 404"
     return
 
+  mainPage: ->
+    app.app ?= new app.AppView()
+
   search: (query) ->
-    app.musics.trigger 'filter', query
-    return
+    console.log "router search"
+    app.app ?= new app.AppView()
+    app.app.show()
 )
 
 app.workspace = new Workspace()

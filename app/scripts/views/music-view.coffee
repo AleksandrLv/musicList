@@ -16,9 +16,6 @@ app.MusicView = Backbone.View.extend(
     this.listenTo this.model, 'visible', this.toggleVisible
     return
 
-  log: ->
-    console.log this.model.get 'performer'
-
   render: ->
     this.$el.html this.template this.model.attributes
     this.bind()
@@ -27,7 +24,7 @@ app.MusicView = Backbone.View.extend(
   bind: ->
     self = this
     this.$(".details").on 'click', ->
-      self.$('.collapse').collapse('toggle')
+      self.$('.collapse').collapse 'toggle'
 
   edit: (e) ->
     obj = {}

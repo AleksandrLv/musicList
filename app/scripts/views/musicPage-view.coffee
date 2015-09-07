@@ -10,20 +10,23 @@ app.MusicPageView = Backbone.View.extend(
     'click .remove': 'removeMusic'
 
   initialize: ->
-    this.musicComposition =
-      'performer': $('#performer')
-      'title': $('#title')
-      'genre': $('#genre')
-      'song': $('#song')
-
-    this.listenTo this.model, 'musicPage:show', this.render
+    this.render()
+    this.listenTo this, 'musicPage:show', this.show
     return
 
   render: ->
-    $('header .btn').hide()
-
     this.$el.html this.template this.model.attributes
+    this.musicComposition =
+      'performer': this.$('#edit-performer')
+      'title': this.$('#edit-title')
+      'genre': this.$('#edit-genre')
+      'song': this.$('#edit-song')
     return this
+
+  show: ->
+    $('header .btn').hide()
+    $('#content').html this.el
+    return
 
   edit: ->
     obj = {}

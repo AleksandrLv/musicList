@@ -2,25 +2,18 @@ window.app = window.app or {}
 
 app.AppView = Backbone.View.extend(
 
-  el: '#music-app'
+  id: "music-app"
+
+  template: _.template $('#mainTemplate').html()
 
   initialize: ->
-    this.musicComposition =
-      'performer': $('#performer')
-      'title': $('#title')
-      'genre': $('#genre')
-      'song': $('#song')
-
-    this.filter = this.$('.filter')[0]
-    this.collapseAll = this.$('.collapse-all')[0]
-    this.$musicList = this.$('#music-list')
-    this.form = this.$('.formAddMusic')[0]
-
     this.listenTo app.musics, 'add', this.addOne
     this.listenTo app.musics, 'reset', this.addAll
-    this.listenTo app.musics, 'filter', this.filterMusics
+    this.listenTo app.workspace, 'route:mainPage', this.show
+    this.listenTo app.workspace, 'route:search', this.filterMusics
 
-    app.musics.fetch({reset: true});
+    this.render()
+    app.musics.fetch reset: true
     return
 
   events:
@@ -28,12 +21,31 @@ app.AppView = Backbone.View.extend(
     'click .collapse-all': 'collapseAll'
     'keypress .filter': 'filterQuery'
 
+  render: ->
+    this.$el.html this.template
+    this.musicComposition =
+      'performer': this.$('#performer')
+      'title': this.$('#title')
+      'genre': this.$('#genre')
+      'song': this.$('#song')
+
+    this.filter = this.$('.filter')[0]
+    this.collapseAll = this.$('.collapse-all')[0]
+    this.$musicList = this.$('#music-list')
+    this.form = this.$('.formAddMusic')[0]
+    return
+
+  show: ->
+    $('header .btn').show()
+    $('#content').html this.el
+    return
+
   createMusic: ->
     obj = {}
     _.each this.musicComposition, ($input, field) ->
       obj[field] = $input.val()
       return
-    obj.order = app.musics.nextOrder()
+    obj.id = app.musics.nextId()
     app.musics.create(obj)
     this.form.reset()
     return
@@ -50,9 +62,9 @@ app.AppView = Backbone.View.extend(
 
   collapseAll: ->
     if this.collapseAll.checked
-      $('.collapse').collapse('show')
+      $('.collapse').collapse 'show'
     else
-      $('.collapse').collapse('hide')
+      $('.collapse').collapse 'hide'
     return
 
   filterQuery: (e) ->
@@ -62,7 +74,7 @@ app.AppView = Backbone.View.extend(
         this.showAll()
         app.workspace.navigate ''
         return
-      app.workspace.navigate '#/?search=' + query, trigger: true #Почему trigger не влияет???
+      app.workspace.navigate '#/?search=' + query, trigger: false #Почему trigger не влияет???
     return
 
   filterMusics: (query) ->

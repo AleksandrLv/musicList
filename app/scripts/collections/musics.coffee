@@ -5,9 +5,9 @@ Musics = Backbone.Collection.extend(
 
   localStorage: new Backbone.LocalStorage 'musics-backbone'
 
-  nextOrder: ->
-    return if this.length then this.last().get('order') + 1 else 1
+  nextId: ->
+    return if this.length then this.last().get('id') + 1 else 0
 
-  comparator: 'order'
+  comparator: 'id'
 )
 app.musics = new Musics()
