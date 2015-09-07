@@ -1,0 +1,33 @@
+script(type="text/template", id="musicPageTemplate").
+  <h2><%= performer %></h2>
+  <audio controls="controls" src="<%= song %>" class="col-sm-12"></audio>
+  <form class="form-horizontal music-details">
+    <div class="form-group">
+      <label for="edit-performer" class="col-md-3 control-label">Исполнитель:</label>
+      <div class="col-md-8">
+        <input id="edit-performer" type="text" placeholder="Исполнитель" value="<%= performer %>" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="edit-title" class="col-md-3 control-label">Название:</label>
+      <div class="col-md-8">
+        <input id="edit-title" type="text" placeholder="Название" value="<%= title %>" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="edit-genre" class="col-md-3 control-label">Жанр:</label>
+      <div class="col-md-8">
+        <input id="edit-genre" type="text" placeholder="Жанр" value="<%= genre %>" class="form-control"/>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="edit-song" class="col-md-3 control-label">URL песни:</label>
+      <div class="col-md-8">
+        <input id="edit-song" type="text" placeholder="URL песни" value="<%= song %>" class="form-control"/>
+      </div>
+    </div>
+  </form>
+  <div class="control-buttons">
+    <a href='/' class="btn btn-success save">Сохранить</a>
+    <a href='/' class="btn btn-danger remove">Удалить</a>
+  </div>

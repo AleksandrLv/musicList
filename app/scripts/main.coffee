@@ -1,3 +1,3 @@
 window.app = window.app or {}
 
-app.app = new app.AppView()
+#app.app = new app.AppView()

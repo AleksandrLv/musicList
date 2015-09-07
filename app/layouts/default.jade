@@ -1,5 +1,5 @@
 doctype html
-html.no-js
+html
   head
     meta(charset='utf-8')
     title Music collection
@@ -18,13 +18,11 @@ html.no-js
     script(src='../bower_components/modernizr/modernizr.js')
     // endbuild
   body
-    include ../includes/header
-    section#music-app
+    header
+      include ../includes/header
+    section#content
       block content
-      #add-music.modal.fade
-        include ../modal/form-popup
-
-    include ../templates/list-item
+    footer
 
     // build:js scripts/vendor.js
     // bower:js
@@ -54,5 +52,9 @@ html.no-js
     script(src='scripts/collections/musics.js')
     script(src='scripts/views/app-view.js')
     script(src='scripts/views/music-view.js')
+    script(src='scripts/views/musicPage-view.js')
+    script(src='scripts/views/404.js')
     script(src='scripts/main.js')
+    script(src='scripts/routers/router.js')
+
     // endbuild

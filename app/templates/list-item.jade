@@ -1,12 +1,12 @@
-script(type="text/template", id="item-template").
+script(type="text/template", id="itemTemplate").
   <div class="view row">
     <div class="details col-md-1"></div>
-    <a href="#" class="title col-md-5"><%= title %></a>
-    <audio controls src=<%= song %> class="col-md-5"></audio>
+    <a href="#/items/<%= id %>" class="title col-md-5"><%= title %></a>
+    <audio controls src="<%= song %>" class="col-md-5"></audio>
     <div class="remove col-md-1"></div>
   </div>
   <div class="view-details collapse in">
-    <form class="form-horizontal">
+    <form class="form-horizontal music-details">
       <div class="form-group">
         <label for="det-performer" class="col-md-3 control-label">Исполнитель:</label>
         <div class="col-md-8">
