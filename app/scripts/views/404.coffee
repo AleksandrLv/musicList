@@ -1,7 +1,7 @@
 window.app = window.app or {}
 
 app.Error = Backbone.View.extend(
-  className: 'error404'
+  className: 'error404 page'
 
   template: _.template '<h2>Page not found 404</h2>'
 
@@ -12,10 +12,13 @@ app.Error = Backbone.View.extend(
     return
 
   render: ->
-    $('header .btn').hide()
     this.$el.html this.template
+    $('#content').append this.el
     return this
 
   show: ->
-    $('#content').html this.el
+    $('header .btn').hide()
+    $('.page').hide()
+    this.$el.show()
+
 )
