@@ -2,9 +2,9 @@ window.app = window.app or {}
 
 Workspace = Backbone.Router.extend(
   routes:
-    '': 'mainPage'
     'items/:item': 'musicItem'
     '?search=:query': 'search'
+    '': 'mainPage'
 
   musicItem: (item) ->
     app.app ?= new app.AppView()

@@ -1,7 +1,7 @@
 window.app = window.app or {}
 
 app.MusicPageView = Backbone.View.extend(
-  className: 'music'
+  className: 'music page'
 
   template: _.template $('#musicPageTemplate').html()
 
@@ -16,6 +16,8 @@ app.MusicPageView = Backbone.View.extend(
 
   render: ->
     this.$el.html this.template this.model.attributes
+    $('#content').append this.el
+
     this.musicComposition =
       'performer': this.$('#edit-performer')
       'title': this.$('#edit-title')
@@ -25,7 +27,8 @@ app.MusicPageView = Backbone.View.extend(
 
   show: ->
     $('header .btn').hide()
-    $('#content').html this.el
+    $('.page').hide()
+    this.$el.show()
     return
 
   edit: ->

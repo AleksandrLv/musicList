@@ -3,6 +3,7 @@ window.app = window.app or {}
 app.AppView = Backbone.View.extend(
 
   id: "music-app"
+  className: 'page'
 
   template: _.template $('#mainTemplate').html()
 
@@ -23,6 +24,8 @@ app.AppView = Backbone.View.extend(
 
   render: ->
     this.$el.html this.template
+    $('#content').append this.el
+
     this.musicComposition =
       'performer': this.$('#performer')
       'title': this.$('#title')
@@ -37,7 +40,8 @@ app.AppView = Backbone.View.extend(
 
   show: ->
     $('header .btn').show()
-    $('#content').html this.el
+    $('.page').hide()
+    this.$el.show()
     return
 
   createMusic: ->
